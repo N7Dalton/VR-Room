@@ -17,6 +17,8 @@ public class Swing : MonoBehaviour
 
     public InputActionProperty swingAction;
 
+    public Rigidbody playerRB;
+    private SpringJoint joint;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,26 +32,44 @@ public class Swing : MonoBehaviour
 
         if(swingAction.action.WasPressedThisFrame())
         {
-               
+            StartSwing();
         }
         else if(swingAction.action.WasReleasedThisFrame())
         {
-        
+            StopSwing();
         }
 
       
     }
     public void StartSwing()
     {
+        if(hasHit)
+        {
+            joint = playerRB.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = swingPoint;
 
+            float distance = Vector3.Distance(playerRB.position, swingPoint);
+            joint.maxDistance = distance;
+
+            joint.spring = 4.5f;
+            joint.damper = 7;
+            joint.massScale = 4.5f;
+        }
     }
 
     public void StopSwing()
     {
-
+        Destroy(joint);
     }
     public void GetSwingPoint()
     {
+        if (joint)
+        {
+            predictionPoint.gameObject.SetActive(false);
+            return;
+        }
+
         RaycastHit raycastHit;
 
        hasHit =  Physics.Raycast(startSwingHand.position, startSwingHand.forward, out raycastHit, maxDistance, swingableLayer);
