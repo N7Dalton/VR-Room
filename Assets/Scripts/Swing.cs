@@ -13,10 +13,13 @@ public class Swing : MonoBehaviour
     public Transform predictionPoint;
     private Vector3 swingPoint;
 
+    public LineRenderer lineRenderer;
     public bool hasHit;
 
     public InputActionProperty swingAction;
+    public InputActionProperty boostAction;
 
+    public float pullingStrength = 500;
     public Rigidbody playerRB;
     private SpringJoint joint;
     // Start is called before the first frame update
@@ -28,6 +31,12 @@ public class Swing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (boostAction.action.WasPressedThisFrame())
+        {
+            Boost();
+        }
+        DrawRopes();
         GetSwingPoint();
 
         if(swingAction.action.WasPressedThisFrame())
@@ -39,15 +48,18 @@ public class Swing : MonoBehaviour
             StopSwing();
         }
 
-      
+        if(joint != null) { Debug.Log(joint.connectedAnchor); }
+        
     }
     public void StartSwing()
     {
         if(hasHit)
         {
             joint = playerRB.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
+           
+            joint.autoConfigureConnectedAnchor = false; //
             joint.connectedAnchor = swingPoint;
+            
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
             joint.maxDistance = distance;
@@ -83,5 +95,31 @@ public class Swing : MonoBehaviour
         {
             predictionPoint.gameObject.SetActive(false);
         }
+    }
+    public void DrawRopes()
+    {
+       if(!joint)
+        {
+            lineRenderer.enabled = false;
+        }
+        else
+        {
+            lineRenderer.enabled = true;
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, startSwingHand.position);
+            lineRenderer.SetPosition(1, swingPoint);
+        }
+    }
+    public void Boost()
+    {
+        if (!joint)
+        {
+            return;
+        }
+        Vector3 direction = (swingPoint - startSwingHand.position).normalized;
+        playerRB.AddForce(direction * pullingStrength* Time.deltaTime );
+
+        float distance = Vector3.Distance(playerRB.position, swingPoint);
+        joint.maxDistance = distance;
     }
 }
