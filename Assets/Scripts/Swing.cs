@@ -48,7 +48,7 @@ public class Swing : MonoBehaviour
             StopSwing();
         }
 
-        if(joint != null) { Debug.Log(joint.connectedAnchor); }
+        
         
     }
     public void StartSwing()
@@ -112,12 +112,13 @@ public class Swing : MonoBehaviour
     }
     public void Boost()
     {
+        Debug.Log("bpoost");
         if (!joint)
         {
             return;
         }
         Vector3 direction = (swingPoint - startSwingHand.position).normalized;
-        playerRB.AddForce(direction * pullingStrength* Time.deltaTime );
+        playerRB.AddForce(direction * pullingStrength* Time.deltaTime,ForceMode.VelocityChange );
 
         float distance = Vector3.Distance(playerRB.position, swingPoint);
         joint.maxDistance = distance;
