@@ -14,6 +14,7 @@ public class Swing : MonoBehaviour
     private Vector3 swingPoint;
 
     public LineRenderer lineRenderer;
+    public LineRenderer canHitRen;
     public bool hasHit;
 
     public InputActionProperty swingAction;
@@ -22,6 +23,8 @@ public class Swing : MonoBehaviour
     public float pullingStrength = 500;
     public Rigidbody playerRB;
     private SpringJoint joint;
+
+    public Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +67,7 @@ public class Swing : MonoBehaviour
             float distance = Vector3.Distance(playerRB.position, swingPoint);
             joint.maxDistance = distance;
 
-            joint.spring = 4.5f;
+            joint.spring = 15f;
             joint.damper = 7;
             joint.massScale = 4.5f;
         }
@@ -89,11 +92,13 @@ public class Swing : MonoBehaviour
         {
             swingPoint = raycastHit.point;
             predictionPoint.gameObject.SetActive(true);
+            canHitRen.sharedMaterial.SetColor("Defualt-Line", Color.green);
             predictionPoint.position = swingPoint;
         }
         else
         {
             predictionPoint.gameObject.SetActive(false);
+            canHitRen.sharedMaterial.SetColor("Defualt-Line", Color.red);
         }
     }
     public void DrawRopes()
@@ -112,12 +117,12 @@ public class Swing : MonoBehaviour
     }
     public void Boost()
     {
-        Debug.Log("bpoost");
+        
         if (!joint)
         {
             return;
         }
-        Vector3 direction = (swingPoint - startSwingHand.position).normalized;
+        Vector3 direction = (cam.transform.forward).normalized;
         playerRB.AddForce(direction * pullingStrength* Time.deltaTime,ForceMode.VelocityChange );
 
         float distance = Vector3.Distance(playerRB.position, swingPoint);

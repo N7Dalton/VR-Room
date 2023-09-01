@@ -3743,7 +3743,7 @@ MonoBehaviour:
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
-  m_AnimateModel: 1
+  m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_PositionAction:
@@ -33015,12 +33015,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSwingHand: {fileID: 1674056946}
-  maxDistance: 999999
+  maxDistance: 9999999
   swingableLayer:
     serializedVersion: 2
     m_Bits: 1
   predictionPoint: {fileID: 982332466}
   lineRenderer: {fileID: 549930013}
+  canHitRen: {fileID: 712900739}
   hasHit: 0
   swingAction:
     m_UseReference: 1
@@ -33048,7 +33049,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3592670357714429872, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  pullingStrength: 1000000
+  pullingStrength: 2500
   playerRB: {fileID: 1313711687}
 --- !u!1001 &1714210824
 PrefabInstance:
@@ -33613,12 +33614,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSwingHand: {fileID: 1802093485}
-  maxDistance: 99999
+  maxDistance: 9999999
   swingableLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   predictionPoint: {fileID: 562908458}
   lineRenderer: {fileID: 15905170}
+  canHitRen: {fileID: 364578163}
   hasHit: 0
   swingAction:
     m_UseReference: 1
@@ -33646,7 +33648,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3592670357714429872, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  pullingStrength: 1000
+  pullingStrength: 2500
   playerRB: {fileID: 1313711687}
 --- !u!1001 &1812123378
 PrefabInstance:
