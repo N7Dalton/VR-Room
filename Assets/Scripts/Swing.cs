@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 public class Swing : MonoBehaviour
 {
     public Transform startSwingHand;
-
-    [Tooltip("The max distance that the webs can go")]
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
 
@@ -22,7 +20,6 @@ public class Swing : MonoBehaviour
     public InputActionProperty swingAction;
     public InputActionProperty boostAction;
 
-    [Tooltip("the force that pulls you when you press R3")]
     public float pullingStrength = 500;
     public Rigidbody playerRB;
     private SpringJoint joint;
