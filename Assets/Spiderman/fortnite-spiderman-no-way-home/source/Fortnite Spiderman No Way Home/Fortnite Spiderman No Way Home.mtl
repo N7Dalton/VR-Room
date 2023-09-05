@@ -1,0 +1,8 @@
+newmtl Model001_Material001
+map_Kd T_M_MED_Lateral_Acc_D.png
+map_bump T_M_MED_Lateral_Acc_N.png
+
+newmtl Model001_Material002
+map_Kd T_M_MED_Lateral_Body_D.png
+map_bump T_M_MED_Lateral_Body_N.png
+

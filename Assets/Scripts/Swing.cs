@@ -23,7 +23,7 @@ public class Swing : MonoBehaviour
     public float pullingStrength = 500;
     public Rigidbody playerRB;
     private SpringJoint joint;
-
+    public float maxSpeed =50;
     public Camera cam;
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,10 @@ public class Swing : MonoBehaviour
             StopSwing();
         }
 
-        
+        if(playerRB.velocity.magnitude > maxSpeed)
+        {
+            playerRB.velocity = Vector3.ClampMagnitude(playerRB.velocity, maxSpeed);
+        }
         
     }
     public void StartSwing()
