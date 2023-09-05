@@ -33049,8 +33049,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3592670357714429872, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  pullingStrength: 2500
+  pullingStrength: 1000
   playerRB: {fileID: 1313711687}
+  cam: {fileID: 920921514}
 --- !u!1001 &1714210824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33648,8 +33649,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3592670357714429872, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  pullingStrength: 2500
+  pullingStrength: 1000
   playerRB: {fileID: 1313711687}
+  cam: {fileID: 920921514}
 --- !u!1001 &1812123378
 PrefabInstance:
   m_ObjectHideFlags: 0
