@@ -25,6 +25,7 @@ public class Swing : MonoBehaviour
     private SpringJoint joint;
     public float maxSpeed =50;
     public Camera cam;
+    public bool canBoost = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class Swing : MonoBehaviour
     void Update()
     {
 
-        if (boostAction.action.WasPressedThisFrame())
+        if (boostAction.action.WasPressedThisFrame() && canBoost)
         {
             Boost();
         }
@@ -62,7 +63,7 @@ public class Swing : MonoBehaviour
         if(hasHit)
         {
             joint = playerRB.gameObject.AddComponent<SpringJoint>();
-           
+           canBoost = true;
             joint.autoConfigureConnectedAnchor = false; //
             joint.connectedAnchor = swingPoint;
             
@@ -130,5 +131,6 @@ public class Swing : MonoBehaviour
 
         float distance = Vector3.Distance(playerRB.position, swingPoint);
         joint.maxDistance = distance;
+        canBoost = false;
     }
 }
