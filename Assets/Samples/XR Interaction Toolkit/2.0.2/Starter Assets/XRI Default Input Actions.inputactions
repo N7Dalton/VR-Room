@@ -825,6 +825,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenUI",
+                    "type": "Button",
+                    "id": "cb3cd043-34c2-4bfe-b3ce-d3781e15ccf8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1012,6 +1021,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "849a2a49-1eb3-4b27-a21c-ebb64f8d6bae",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

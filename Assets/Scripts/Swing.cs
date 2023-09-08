@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +21,7 @@ public class Swing : MonoBehaviour
 
     public InputActionProperty swingAction;
     public InputActionProperty boostAction;
+    public InputActionProperty OpenUIAction;
 
     public float pullingStrength = 500;
     public Rigidbody playerRB;
@@ -26,6 +29,11 @@ public class Swing : MonoBehaviour
     public float maxSpeed =50;
     public Camera cam;
     public bool canBoost = false;
+    public float BoostAmount = 2f;
+    public float maxBoostAmount = 2f;
+    public GameObject UI;
+    public bool UIOpened = false;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +44,7 @@ public class Swing : MonoBehaviour
     void Update()
     {
 
+       
         if (boostAction.action.WasPressedThisFrame() && canBoost)
         {
             Boost();
@@ -43,22 +52,29 @@ public class Swing : MonoBehaviour
         DrawRopes();
         GetSwingPoint();
 
-        if(swingAction.action.WasPressedThisFrame())
+        if (swingAction.action.WasPressedThisFrame())
         {
             StartSwing();
         }
-        else if(swingAction.action.WasReleasedThisFrame())
+        else if (swingAction.action.WasReleasedThisFrame())
         {
             StopSwing();
         }
 
-        if(playerRB.velocity.magnitude > maxSpeed)
+        if (playerRB.velocity.magnitude > maxSpeed)
         {
             playerRB.velocity = Vector3.ClampMagnitude(playerRB.velocity, maxSpeed);
         }
-        
+
+        if (OpenUIAction.action.WasPressedThisFrame())       
+        {
+            UIOPEN();
+        }
+       
+                
+            
     }
-    public void StartSwing()
+        public void StartSwing()
     {
         if(hasHit)
         {
@@ -66,13 +82,14 @@ public class Swing : MonoBehaviour
            canBoost = true;
             joint.autoConfigureConnectedAnchor = false; //
             joint.connectedAnchor = swingPoint;
-            
+
+            BoostAmount = maxBoostAmount;
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
             joint.maxDistance = distance;
 
-            joint.spring = 15f;
-            joint.damper = 7;
+            joint.spring = 20f;
+            joint.damper = 10f;
             joint.massScale = 4.5f;
         }
     }
@@ -126,11 +143,31 @@ public class Swing : MonoBehaviour
         {
             return;
         }
-        Vector3 direction = (cam.transform.forward).normalized;
-        playerRB.AddForce(direction * pullingStrength* Time.deltaTime,ForceMode.VelocityChange );
+        if (BoostAmount > 0)
+        {
+            Vector3 direction = (cam.transform.forward).normalized;
+            playerRB.AddForce(direction * pullingStrength * Time.deltaTime, ForceMode.VelocityChange);
 
-        float distance = Vector3.Distance(playerRB.position, swingPoint);
-        joint.maxDistance = distance;
-        canBoost = false;
+            float distance = Vector3.Distance(playerRB.position, swingPoint);
+            joint.maxDistance = distance;
+           
+            BoostAmount = BoostAmount -1;
+        }
+       
+    }
+    public void UIOPEN()
+    {
+        if (UIOpened)
+        {
+            
+            UI.SetActive(false);
+            UIOpened = false;
+        }
+        else
+        {
+            
+            UI.SetActive(true);
+            UIOpened = true;
+        }
     }
 }

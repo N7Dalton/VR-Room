@@ -15,7 +15,7 @@ public class WristUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Hand.transform.localRotation.eulerAngles.z);
+      
         if (Hand.transform.localRotation.eulerAngles.z <= 0 || Hand.transform.localRotation.eulerAngles.z >= -90)
         {
             canvas.SetActive(true);
