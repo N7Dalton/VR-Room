@@ -18,7 +18,7 @@ public class ResetScript : MonoBehaviour
     }
     public void ResetPlayer()
     {
-       XRrig.transform.Translate(0,0,0);
+       XRrig.transform.position = new Vector3(0,0,0);
        XRrig.velocity = new Vector3(0,0,0);
     }
     public void Quit()

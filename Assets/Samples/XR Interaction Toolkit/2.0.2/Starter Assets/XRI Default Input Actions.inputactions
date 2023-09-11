@@ -282,6 +282,15 @@
                 {
                     "name": "Boost",
                     "type": "Button",
+                    "id": "0be159fd-667c-476e-9c57-cfa385ca5949",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
                     "id": "809ed1fb-610a-44e9-b43f-bb72dbb6ae54",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -469,6 +478,17 @@
                 {
                     "name": "",
                     "id": "23cda332-de66-41f3-a193-299ea44b9fdf",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08c35df5-8c0c-40d1-8bb0-2d6df3307e4e",
                     "path": "<XRController>{LeftHand}/thumbstickClicked",
                     "interactions": "",
                     "processors": "",
