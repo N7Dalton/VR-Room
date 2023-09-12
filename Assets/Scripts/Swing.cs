@@ -27,6 +27,8 @@ public class Swing : MonoBehaviour
     public InputActionProperty OpenUIAction;
     public InputActionProperty jumpAction;
 
+    public Rigidbody Hand;
+    
 
     public float chargeSpeed;
     public float chargeTime;

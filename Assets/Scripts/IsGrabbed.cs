@@ -19,7 +19,8 @@ public class IsGrabbed : MonoBehaviour
     {
         if (interactable.isSelected)
         {
-            Mask.SetActive(true);
+            Mask.gameObject.layer = LayerMask.NameToLayer("MaskOn");
+
         }
     }
 }
