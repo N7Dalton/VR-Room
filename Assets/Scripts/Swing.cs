@@ -6,15 +6,19 @@ using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Rendering;
 
 public class Swing : MonoBehaviour
 {
+   
     public Transform startSwingHand;
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
     public SphereCollider IsGroundedSphere;
     public bool isGrounded;
 
+
+    
     public Transform predictionPoint;
     private Vector3 swingPoint;
 
@@ -36,10 +40,10 @@ public class Swing : MonoBehaviour
     public bool isPressingB = false;
     public bool canJump = false;
 
-    public float pullingStrength = 500;
+    public float pullingStrength = 1000;
     public Rigidbody playerRB;
     private SpringJoint joint;
-    public float maxSpeed = 50;
+    public float maxSpeed = 125;
     public Camera cam;
    
     public GameObject UI;
@@ -49,7 +53,7 @@ public class Swing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        canHitRen = Hand.gameObject.GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -131,7 +135,7 @@ public class Swing : MonoBehaviour
             
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
-            joint.maxDistance = distance;
+            joint.maxDistance = distance / 1.25f;
 
             joint.spring = 20f;
             joint.damper = 10f;
@@ -159,13 +163,13 @@ public class Swing : MonoBehaviour
         {
             swingPoint = raycastHit.point;
             predictionPoint.gameObject.SetActive(true);
-            canHitRen.sharedMaterial.SetColor("Defualt-Line", Color.green);
+           
             predictionPoint.position = swingPoint;
         }
         else
         {
             predictionPoint.gameObject.SetActive(false);
-            canHitRen.sharedMaterial.SetColor("Defualt-Line", Color.red);
+            
         }
     }
     public void DrawRopes()
@@ -180,6 +184,7 @@ public class Swing : MonoBehaviour
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, startSwingHand.position);
             lineRenderer.SetPosition(1, swingPoint);
+           
         }
     }
     public void Boost()
@@ -194,7 +199,7 @@ public class Swing : MonoBehaviour
             playerRB.AddForce(direction * pullingStrength * Time.deltaTime, ForceMode.VelocityChange);
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
-            joint.maxDistance = distance;
+            joint.maxDistance = distance / 1.25f;
         
 
     }
