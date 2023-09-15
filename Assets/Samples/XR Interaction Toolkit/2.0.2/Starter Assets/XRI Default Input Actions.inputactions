@@ -217,6 +217,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "OpenUI",
+                    "type": "Button",
+                    "id": "4b527b18-c3e1-4a79-bf2f-ee94f8da2e3d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Select Value",
                     "type": "Value",
                     "id": "e6005f29-e4c1-4f3b-8bf7-3a28bab5ca9c",
@@ -494,6 +503,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07ab9b52-d647-41a7-8064-49d75f6aa46f",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2,7 +2,6 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -10,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Rendering;
 
 public class Swing : MonoBehaviour
 {
-   
+
     public Transform startSwingHand;
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
@@ -18,7 +17,7 @@ public class Swing : MonoBehaviour
     public bool isGrounded;
 
 
-    
+
     public Transform predictionPoint;
     private Vector3 swingPoint;
 
@@ -30,9 +29,10 @@ public class Swing : MonoBehaviour
     public InputActionProperty boostAction;
     public InputActionProperty OpenUIAction;
     public InputActionProperty jumpAction;
+    
 
     public Rigidbody Hand;
-    
+
 
     public float chargeSpeed;
     public float chargeTime;
@@ -45,8 +45,9 @@ public class Swing : MonoBehaviour
     private SpringJoint joint;
     public float maxSpeed = 125;
     public Camera cam;
-   
+
     public GameObject UI;
+    
     public bool UIOpened = false;
     public float distance;
     public AudioSource FWIP;
@@ -112,27 +113,27 @@ public class Swing : MonoBehaviour
         {
             UIOPEN();
         }
-
+        
 
 
     }
     public void OnCollisionStay(Collision collision)
     {
-     
-            
-        
-      
+
+
+
+
     }
     public void StartSwing()
     {
         if (hasHit)
         {
             joint = playerRB.gameObject.AddComponent<SpringJoint>();
-            
+
             joint.autoConfigureConnectedAnchor = false; //
             joint.connectedAnchor = swingPoint;
 
-            
+
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
             joint.maxDistance = distance / 1.25f;
@@ -163,13 +164,13 @@ public class Swing : MonoBehaviour
         {
             swingPoint = raycastHit.point;
             predictionPoint.gameObject.SetActive(true);
-           
+
             predictionPoint.position = swingPoint;
         }
         else
         {
             predictionPoint.gameObject.SetActive(false);
-            
+
         }
     }
     public void DrawRopes()
@@ -184,7 +185,7 @@ public class Swing : MonoBehaviour
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, startSwingHand.position);
             lineRenderer.SetPosition(1, swingPoint);
-           
+
         }
     }
     public void Boost()
@@ -194,13 +195,13 @@ public class Swing : MonoBehaviour
         {
             return;
         }
-       
-            Vector3 direction = (cam.transform.forward).normalized;
-            playerRB.AddForce(direction * pullingStrength * Time.deltaTime, ForceMode.VelocityChange);
 
-            float distance = Vector3.Distance(playerRB.position, swingPoint);
-            joint.maxDistance = distance / 1.25f;
-        
+        Vector3 direction = (cam.transform.forward).normalized;
+        playerRB.AddForce(direction * pullingStrength * Time.deltaTime, ForceMode.VelocityChange);
+
+        float distance = Vector3.Distance(playerRB.position, swingPoint);
+        joint.maxDistance = distance / 1.25f;
+
 
     }
     public void jump()
@@ -224,4 +225,6 @@ public class Swing : MonoBehaviour
             UIOpened = true;
         }
     }
+    
+
 }
