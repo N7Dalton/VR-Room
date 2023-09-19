@@ -95,7 +95,7 @@ public class Swing : MonoBehaviour
         {
             canHitRen.enabled = false;
         }
-
+           
 
     }
     public void OnCollisionStay(Collision collision)
@@ -135,7 +135,7 @@ public class Swing : MonoBehaviour
         if (joint)
         {
             predictionPoint.gameObject.SetActive(false);
-            canHitRen.gameObject.SetActive(false);
+            //canHitRen.gameObject.SetActive(false);
             return;
         }
 
