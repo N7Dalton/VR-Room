@@ -6,6 +6,8 @@ public class TurnOnUI : MonoBehaviour
 {
     public GameObject MaskUI;
     public Transform cam;
+    public float scaleTime = 3f;
+    public bool maskOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +22,17 @@ public class TurnOnUI : MonoBehaviour
 
    public void MaskUIOn()
     {
-        Instantiate(MaskUI, cam);
+        if (MaskUI == null)
+        {
+            Instantiate(MaskUI, cam);
+            maskOn = true;
+        }
+        else
+        {
+            Destroy(MaskUI);
+            maskOn = false;
+        }
+       
     }
-    public void MaskUIOff()
-    {
-        Destroy(MaskUI);
-    }
+   
 }

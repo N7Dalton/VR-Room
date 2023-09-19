@@ -9,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Rendering;
 
 public class Swing : MonoBehaviour
 {
-
+    public TurnOnUI MaskUIScript;
     public Transform startSwingHand;
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
@@ -61,33 +61,7 @@ public class Swing : MonoBehaviour
     void Update()
     {
 
-        if (IsGroundedSphere.isTrigger == false)
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }
-        if (jumpAction.action.IsPressed())
-        {
-            isCharging = true;
-            if (isCharging)
-            {
-                chargeTime += Time.deltaTime * chargeSpeed;
-            }
-            isPressingB = true;
-        }
-        else
-        {
-            isPressingB = false;
-        }
-
-        if (!isPressingB && chargeTime >= 2 && canJump)
-        {
-            jump();
-        }
-
+      
         if (boostAction.action.WasPressedThisFrame())
         {
             Boost();
@@ -113,7 +87,14 @@ public class Swing : MonoBehaviour
         {
             UIOPEN();
         }
-        
+        if (MaskUIScript.maskOn)
+        {
+            canHitRen.enabled = true;
+        }
+        else
+        {
+            canHitRen.enabled = false;
+        }
 
 
     }
@@ -154,6 +135,7 @@ public class Swing : MonoBehaviour
         if (joint)
         {
             predictionPoint.gameObject.SetActive(false);
+            canHitRen.gameObject.SetActive(false);
             return;
         }
 

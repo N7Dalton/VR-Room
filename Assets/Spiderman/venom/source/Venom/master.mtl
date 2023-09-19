@@ -1,0 +1,15 @@
+newmtl NewMat01
+map_Ka mat0_c.jpg
+map_Kd mat0_c.jpg
+newmtl body
+map_Ka mat1_c.jpg
+map_Kd mat1_c.jpg
+newmtl gums
+map_Ka mat2_c.jpg
+map_Kd mat2_c.jpg
+newmtl teeth
+map_Ka mat3_c.jpg
+map_Kd mat3_c.jpg
+newmtl tongue
+map_Ka mat4_c.jpg
+map_Kd mat4_c.jpg
