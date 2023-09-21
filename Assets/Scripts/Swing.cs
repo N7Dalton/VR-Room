@@ -149,6 +149,10 @@ public class Swing : MonoBehaviour
 
             predictionPoint.position = swingPoint;
         }
+       
+       
+
+      
         else
         {
             predictionPoint.gameObject.SetActive(false);

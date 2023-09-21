@@ -217,15 +217,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenUI",
-                    "type": "Button",
-                    "id": "4b527b18-c3e1-4a79-bf2f-ee94f8da2e3d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Select Value",
                     "type": "Value",
                     "id": "e6005f29-e4c1-4f3b-8bf7-3a28bab5ca9c",
@@ -287,24 +278,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Boost",
-                    "type": "Button",
-                    "id": "0be159fd-667c-476e-9c57-cfa385ca5949",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "809ed1fb-610a-44e9-b43f-bb72dbb6ae54",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -483,39 +456,6 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "23cda332-de66-41f3-a193-299ea44b9fdf",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "08c35df5-8c0c-40d1-8bb0-2d6df3307e4e",
-                    "path": "<XRController>{LeftHand}/thumbstickClicked",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "07ab9b52-d647-41a7-8064-49d75f6aa46f",
-                    "path": "<XRController>{LeftHand}/secondaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -856,24 +796,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Boost",
-                    "type": "Button",
-                    "id": "f28451b2-967d-4a7a-9d46-2ce99826063b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenUI",
-                    "type": "Button",
-                    "id": "cb3cd043-34c2-4bfe-b3ce-d3781e15ccf8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1052,28 +974,6 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "52461e8b-fe8a-4041-9614-0ce45839f9fc",
-                    "path": "<XRController>{RightHand}/thumbstickClicked",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "849a2a49-1eb3-4b27-a21c-ebb64f8d6bae",
-                    "path": "<XRController>{RightHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
