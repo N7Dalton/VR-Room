@@ -43,7 +43,7 @@ public class Swing : MonoBehaviour
     public float pullingStrength = 1000;
     public Rigidbody playerRB;
     private SpringJoint joint;
-    public float maxSpeed = 125;
+    public float maxSpeed = 200;
     public Camera cam;
 
     public GameObject UI;
@@ -179,7 +179,7 @@ public class Swing : MonoBehaviour
         }
 
         Vector3 direction = (cam.transform.forward).normalized;
-        playerRB.AddForce(direction * pullingStrength * Time.deltaTime, ForceMode.VelocityChange);
+        playerRB.AddForce(direction * Time.deltaTime * pullingStrength, ForceMode.Impulse);
 
         float distance = Vector3.Distance(playerRB.position, swingPoint);
         joint.maxDistance = distance / 1.25f;
