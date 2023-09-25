@@ -39664,7 +39664,7 @@ MonoBehaviour:
   canJump: 0
   pullingStrength: 5000
   playerRB: {fileID: 1313711687}
-  maxSpeed: 50
+  maxSpeed: 200
   cam: {fileID: 920921514}
   UI: {fileID: 1637343718}
   UIOpened: 1
@@ -41306,7 +41306,7 @@ MonoBehaviour:
   canJump: 0
   pullingStrength: 5000
   playerRB: {fileID: 1313711687}
-  maxSpeed: 100
+  maxSpeed: 200
   cam: {fileID: 920921514}
   UI: {fileID: 0}
   UIOpened: 1
