@@ -24,6 +24,7 @@ public class Swing : MonoBehaviour
     public LineRenderer lineRenderer;
     public LineRenderer canHitRen;
     public bool hasHit;
+    public bool hasHitEnemy;
 
     public InputActionProperty swingAction;
     public InputActionProperty boostAction;
@@ -51,6 +52,8 @@ public class Swing : MonoBehaviour
     public bool UIOpened = false;
     public float distance;
     public AudioSource FWIP;
+
+    public Rigidbody enemyHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,8 +110,10 @@ public class Swing : MonoBehaviour
     }
     public void StartSwing()
     {
+       
         if (hasHit)
         {
+            Debug.Log("Has hit building...");
             joint = playerRB.gameObject.AddComponent<SpringJoint>();
 
             joint.autoConfigureConnectedAnchor = false; //
@@ -128,7 +133,10 @@ public class Swing : MonoBehaviour
 
     public void StopSwing()
     {
+        
         Destroy(joint);
+        
+       
     }
     public void GetSwingPoint()
     {
@@ -142,6 +150,11 @@ public class Swing : MonoBehaviour
         RaycastHit raycastHit;
 
         hasHit = Physics.Raycast(startSwingHand.position, startSwingHand.forward, out raycastHit, maxDistance, swingableLayer);
+        //hasHitEnemy = raycastHit.transform.root.name.Contains("Enemy1");
+        //enemyHit = raycastHit.rigidbody;
+       
+
+
         if (hasHit)
         {
             swingPoint = raycastHit.point;
