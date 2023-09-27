@@ -5,7 +5,7 @@ using UnityEngine;
 public class PrisonerScript : MonoBehaviour
 {
 
-    public BoxCollider MainCollider;
+    public CapsuleCollider MainCollider;
     public GameObject MainRig;
     public Animator MainAnimator;
    
@@ -21,7 +21,7 @@ public class PrisonerScript : MonoBehaviour
     {
         
     }
-    public void OnCollisionStay(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.transform.name);
         if(collision.gameObject.tag == "Player")
@@ -63,7 +63,7 @@ public class PrisonerScript : MonoBehaviour
     {
         foreach(Collider collider in ragdollColliders) 
         { 
-            collider.enabled = true; 
+            collider.enabled = false; 
         
         }
         foreach (Rigidbody rigidbody in limbsRigidbodys)
