@@ -101,13 +101,7 @@ public class Swing : MonoBehaviour
            
 
     }
-    public void OnCollisionStay(Collision collision)
-    {
-
-
-
-
-    }
+   
     public void StartSwing()
     {
        
