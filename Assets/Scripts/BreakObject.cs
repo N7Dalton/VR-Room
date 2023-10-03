@@ -17,19 +17,20 @@ public class BreakObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectToBreakRB.velocity.magnitude > 0)
+        if (objectToBreakRB.velocity.magnitude > 4)
         {
             canBreak = true;
 
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if(canBreak) 
+        if(canBreak && other.transform.root.tag != "Player") 
         {
             Debug.Log("cab break  and istrigger");
             Instantiate(brokenObject, objectToBreak.transform.position , Quaternion.identity);
+            
             Destroy(objectToBreak);
 
         }

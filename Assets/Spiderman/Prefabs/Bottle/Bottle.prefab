@@ -37436,7 +37436,8 @@ MonoBehaviour:
   canBreak: 0
   objectToBreakRB: {fileID: 4578387710548767423}
   objectToBreak: {fileID: 4013508428787061516}
-  brokenObject: {fileID: 0}
+  brokenObject: {fileID: 2010100926506452768, guid: f21abfd9268dc784da51d267e6c4bc0c,
+    type: 3}
 --- !u!54 &4578387710548767423 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: -6378135897916475741, guid: b39bc46f5f5fc5243bb9c1ec0245b63a,
