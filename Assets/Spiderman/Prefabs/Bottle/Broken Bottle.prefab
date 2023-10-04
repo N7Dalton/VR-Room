@@ -6221,7 +6221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bink: {fileID: 560962885268606145}
-  Shatter: {fileID: 0}
+  Shatter: {fileID: 9100919338267344114}
 --- !u!64 &3142987685520094946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18886,7 +18886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bink: {fileID: 560962885268606145}
-  Shatter: {fileID: 0}
+  Shatter: {fileID: 9100919338267344114}
 --- !u!64 &4039926337728792555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30598,7 +30598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bink: {fileID: 560962885268606145}
-  Shatter: {fileID: 0}
+  Shatter: {fileID: 9100919338267344114}
 --- !u!64 &293747794866546109
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40904,7 +40904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bink: {fileID: 560962885268606145}
-  Shatter: {fileID: 0}
+  Shatter: {fileID: 9100919338267344114}
 --- !u!64 &7920665280362866642
 MeshCollider:
   m_ObjectHideFlags: 0

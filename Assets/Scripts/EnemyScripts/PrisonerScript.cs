@@ -5,6 +5,9 @@ using UnityEngine;
 public class PrisonerScript : MonoBehaviour
 {
 
+    private Animator Anim;
+
+
     public CapsuleCollider MainCollider;
     public GameObject MainRig;
     public Animator MainAnimator;
@@ -14,6 +17,7 @@ public class PrisonerScript : MonoBehaviour
     {
         GetRagdollThings();
         ragdollModeOff();
+        Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,7 +30,7 @@ public class PrisonerScript : MonoBehaviour
        
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("collides");
+            
             ragdollModeOn();
         }
     }
@@ -76,5 +80,20 @@ public class PrisonerScript : MonoBehaviour
         MainAnimator.enabled = true;
         MainCollider.enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void Shoot()
+    {
+        
+    }
+    public void OnBecameVisible()
+    {
+        Shoot();
+        Anim.Play("Shooting");
+    }
+
+    public void OnBecameInvisible()
+    {
+        Anim.Play("Idle");
     }
 }
