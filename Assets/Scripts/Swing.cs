@@ -107,7 +107,7 @@ public class Swing : MonoBehaviour
        
         if (hasHit)
         {
-            Debug.Log("Has hit building...");
+            
             joint = playerRB.gameObject.AddComponent<SpringJoint>();
 
             joint.autoConfigureConnectedAnchor = false; //

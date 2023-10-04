@@ -23,7 +23,7 @@ public class PrisonerScript : MonoBehaviour
     }
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.transform.name);
+       
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("collides");

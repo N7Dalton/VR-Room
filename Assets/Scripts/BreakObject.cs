@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BreakObject : MonoBehaviour
 {
+    public AudioSource Bink;
     public bool canBreak = false;
     public Rigidbody objectToBreakRB;
     public GameObject objectToBreak;
@@ -26,7 +27,9 @@ public class BreakObject : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        if(canBreak && other.transform.root.tag != "Player") 
+            Bink.Play();
+        
+        if (canBreak && other.transform.root.tag != "Player") 
         {
             Debug.Log("cab break  and istrigger");
             Instantiate(brokenObject, objectToBreak.transform.position , Quaternion.identity);

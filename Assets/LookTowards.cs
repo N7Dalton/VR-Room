@@ -14,6 +14,6 @@ public class LookTowards : MonoBehaviour
     public void Update()
     {
       this.transform.LookAt(GameObject.FindWithTag("Player").transform.position); 
-        this.gameObject.transform.Translate(this.transform.forward * .01f);
+        //this.gameObject.transform.Translate(this.transform.forward * .01f);
     }
 }

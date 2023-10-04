@@ -17,7 +17,7 @@ public class SendPiecesFlying : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         random = UnityEngine.Random.Range(1f, 5f);
         Vector3 RandomVector3 = random * rb.velocity;
-        Debug.Log("ben");
+        
         rb.AddExplosionForce(random * 100, new Vector3(-10,0,0) ,20f ,1f);
         Shatter.Play();
 
@@ -32,7 +32,7 @@ public class SendPiecesFlying : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("BINK");
+        
        Bink.Play();
     }
 
