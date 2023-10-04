@@ -31,7 +31,7 @@ public class BreakObject : MonoBehaviour
         
         if (canBreak && other.transform.root.tag != "Player") 
         {
-            Debug.Log("cab break  and istrigger");
+         
             Instantiate(brokenObject, objectToBreak.transform.position , Quaternion.identity);
             
             Destroy(objectToBreak);
