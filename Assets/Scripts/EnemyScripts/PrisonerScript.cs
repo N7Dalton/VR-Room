@@ -45,7 +45,7 @@ public class PrisonerScript : MonoBehaviour
     public void ragdollModeOn()
     {
 
-       MainAnimator.enabled = false;
+       Anim.enabled = false;
         foreach (Collider collider in ragdollColliders)
         {
             collider.enabled = true;
@@ -77,7 +77,7 @@ public class PrisonerScript : MonoBehaviour
         }
 
 
-        MainAnimator.enabled = true;
+        Anim.enabled = true;
         MainCollider.enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
     }
