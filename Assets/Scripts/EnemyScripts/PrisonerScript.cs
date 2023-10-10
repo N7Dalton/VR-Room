@@ -5,12 +5,12 @@ using UnityEngine;
 public class PrisonerScript : MonoBehaviour
 {
 
-    private Animator Anim;
+    public Animator Anim;
 
 
     public CapsuleCollider MainCollider;
     public GameObject MainRig;
-    public Animator MainAnimator;
+    //public Animator MainAnimator;
    
     // Start is called before the first frame update
     void Start()
@@ -38,13 +38,14 @@ public class PrisonerScript : MonoBehaviour
     Rigidbody[] limbsRigidbodys;
     void GetRagdollThings()
     {
+        //just gets all of the Rigidbodies and Colliders at the start(Ignore)
         ragdollColliders = MainRig.GetComponentsInChildren<Collider>();
         limbsRigidbodys = MainRig.GetComponentsInChildren<Rigidbody>();
     }
 
     public void ragdollModeOn()
     {
-
+        Debug.Log("RAGDOLL MODE GO!");
        Anim.enabled = false;
         foreach (Collider collider in ragdollColliders)
         {
@@ -84,16 +85,9 @@ public class PrisonerScript : MonoBehaviour
 
     public void Shoot()
     {
-        
+        Anim.SetBool("IsShooting", true);
     }
-    public void OnBecameVisible()
-    {
-        Shoot();
-        Anim.Play("Shooting");
-    }
+   
 
-    public void OnBecameInvisible()
-    {
-        Anim.Play("Idle");
-    }
+    
 }
