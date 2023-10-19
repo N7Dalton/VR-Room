@@ -51,26 +51,27 @@ public class Swing : MonoBehaviour
     
     public bool UIOpened = false;
     public float distance;
-    public AudioSource FWIP;
+    private AudioSource FWIP;
 
     public Rigidbody enemyHit;
     // Start is called before the first frame update
     void Start()
     {
         canHitRen = Hand.gameObject.GetComponent<LineRenderer>();
+        FWIP = Hand.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-      
+        DrawRopes();
+        GetSwingPoint();
         if (boostAction.action.WasPressedThisFrame())
         {
             Boost();
         }
-        DrawRopes();
-        GetSwingPoint();
+       
 
         if (swingAction.action.WasPressedThisFrame())
         {
