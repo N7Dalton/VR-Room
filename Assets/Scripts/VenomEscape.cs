@@ -8,10 +8,11 @@ public class VenomEscape : MonoBehaviour
     public GameObject Spawn1;
   
     public GameObject Venom;
+    public bool venomInCage;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Wait());
+        InvokeRepeating("VenomEscapeEvent", 1,1);
        
     }
 
@@ -27,7 +28,10 @@ public class VenomEscape : MonoBehaviour
     }
     public void VenomEscapeEvent()
     {
-        Venom.transform.position = Spawn1.transform.position;
+       if (!venomInCage)
+        {
+          transform.position = new Vector3(130, 311, -187);
+        }
         
     }
 }
