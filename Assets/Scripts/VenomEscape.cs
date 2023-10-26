@@ -4,34 +4,109 @@ using UnityEngine;
 
 public class VenomEscape : MonoBehaviour
 {
-   
-    public GameObject Spawn1;
-  
+    public GameObject mainRig; //this is the parent game object
+    public Animator Anim; // this will turn on and off animations
+    public CapsuleCollider MainCollider; //this is the capsule collider that when you collide with it then it will trigger ragdoll mode
+                                        //its a seperate capsule collider you have to add to the whole model for collisions
+    private Vector3 spawnPoint = new Vector3(130, 311, -187);
+    private Vector3 Cage = new Vector3(0, 0, 5);
     public GameObject Venom;
     public bool venomInCage;
+    public AudioSource venomEscapedNoise;
+    public AudioSource venomTaunt;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("VenomEscapeEvent", 1,1);
-       
+        InvokeRepeating("VenomEscapeEvent", 10f, 100f);
+        GetRagdollThings();
+        ragdollModeOff();
+        Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
-    private IEnumerator Wait()
+    public void OnTriggerEnter(Collider collision)
     {
-        yield return new WaitForSecondsRealtime(60);
 
+        if (collision.gameObject.tag == "Player")
+        {
+
+            ragdollModeOn();
+        }
+    }
+    Collider[] ragdollColliders;
+    Rigidbody[] limbsRigidbodys;
+    void GetRagdollThings()
+    {
+        //just gets all of the Rigidbodies and Colliders at the start(Ignore)
+        ragdollColliders = mainRig.GetComponentsInChildren<Collider>();
+        limbsRigidbodys = mainRig.GetComponentsInChildren<Rigidbody>();
+    }
+    public void ragdollModeOn()
+    {
+        Debug.Log("RAGDOLL MODE GO!");
+        Anim.enabled = false;
+        StartCoroutine("VenomHit");
+        foreach (Collider collider in ragdollColliders)
+        {
+            collider.enabled = true;
+
+        }
+        foreach (Rigidbody rigidbody in limbsRigidbodys)
+        {
+            rigidbody.isKinematic = false;
+
+        }
+
+
+
+        MainCollider.enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+    public void ragdollModeOff()
+    {
+        foreach (Collider collider in ragdollColliders)
+        {
+            collider.enabled = false;
+
+        }
+        foreach (Rigidbody rigidbody in limbsRigidbodys)
+        {
+            rigidbody.isKinematic = true;
+
+        }
+
+
+        Anim.enabled = true;
+        MainCollider.enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+    public IEnumerator VenomHit()
+    {
+        Debug.Log("Venom hit co routine");
+        yield return new WaitForSecondsRealtime(10f);
+        ragdollModeOff();
+        Venom.transform.position = Cage;
     }
     public void VenomEscapeEvent()
     {
-       if (!venomInCage)
+       if (Venom.transform.position != spawnPoint)
         {
-          transform.position = new Vector3(130, 311, -187);
+           
+            
+                venomEscapedNoise.Play();
+                Venom.transform.position = spawnPoint;
+                Debug.Log("Venom Escaped!");
+                venomInCage = true;
         }
-        
+        else
+        {
+                venomTaunt.Play();
+                Debug.Log("VENOM IS ALREADY OUT GO GET HIM");
+                venomInCage = false;    
+        }
     }
 }

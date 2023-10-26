@@ -20,6 +20,6 @@ public class PlayVenomAudio : MonoBehaviour
     }
     public void play_sound()
     {
-        m_AudioSource.Play();
+      
     }
 }
