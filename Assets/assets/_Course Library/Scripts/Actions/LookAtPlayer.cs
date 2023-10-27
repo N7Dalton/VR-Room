@@ -32,6 +32,7 @@ public class LookAtPlayer : MonoBehaviour
 
     private void LookAt()
     {
+        /*
         Vector3 direction = transform.position - cameraObject.transform.position;
         Vector3 newRotation =  Quaternion.LookRotation(direction, transform.up).eulerAngles;
 
@@ -40,5 +41,6 @@ public class LookAtPlayer : MonoBehaviour
         newRotation.z = lookZ ? newRotation.z : originalRotation.z;
 
         transform.rotation = Quaternion.Euler(newRotation);
+        */
     }
 }

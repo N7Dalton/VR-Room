@@ -14,6 +14,8 @@ public class VenomEscape : MonoBehaviour
     public bool venomInCage;
     public AudioSource venomEscapedNoise;
     public AudioSource venomTaunt;
+    public GameObject Pling;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class VenomEscape : MonoBehaviour
         GetRagdollThings();
         ragdollModeOff();
         Anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class VenomEscape : MonoBehaviour
     }
     public void ragdollModeOn()
     {
+        rb.constraints = RigidbodyConstraints.None;
         Debug.Log("RAGDOLL MODE GO!");
         Anim.enabled = false;
         StartCoroutine("VenomHit");
@@ -90,13 +95,15 @@ public class VenomEscape : MonoBehaviour
         yield return new WaitForSecondsRealtime(10f);
         ragdollModeOff();
         Venom.transform.position = Cage;
+        Pling.SetActive(false);
+        rb.constraints = RigidbodyConstraints.None;
     }
     public void VenomEscapeEvent()
     {
        if (Venom.transform.position != spawnPoint)
         {
            
-            
+                Pling.SetActive(true);
                 venomEscapedNoise.Play();
                 Venom.transform.position = spawnPoint;
                 Debug.Log("Venom Escaped!");
