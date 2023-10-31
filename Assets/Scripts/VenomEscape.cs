@@ -8,7 +8,7 @@ public class VenomEscape : MonoBehaviour
     public Animator Anim; // this will turn on and off animations
     public CapsuleCollider MainCollider; //this is the capsule collider that when you collide with it then it will trigger ragdoll mode
                                         //its a seperate capsule collider you have to add to the whole model for collisions
-    private Vector3 spawnPoint = new Vector3(130, 311, -187);
+    private Vector3 spawnPoint = new Vector3(130, 310.40f, 187);
     private Vector3 Cage = new Vector3(0, 0, 5);
     public GameObject Venom;
     public bool venomInCage;
@@ -19,7 +19,7 @@ public class VenomEscape : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("VenomEscapeEvent", 10f, 100f);
+        InvokeRepeating("VenomEscapeEvent", 20f, 100f);
         GetRagdollThings();
         ragdollModeOff();
         Anim = GetComponent<Animator>();
@@ -35,7 +35,7 @@ public class VenomEscape : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerHead")
         {
 
             ragdollModeOn();
