@@ -16,7 +16,7 @@ public class Swing : MonoBehaviour
     public SphereCollider IsGroundedSphere;
     public bool isGrounded;
 
-
+    public float Gravityamount = 9.81f;
 
     public Transform predictionPoint;
     private Vector3 swingPoint;
@@ -80,6 +80,7 @@ public class Swing : MonoBehaviour
         else if (swingAction.action.WasReleasedThisFrame())
         {
             StopSwing();
+            
         }
 
         if (playerRB.velocity.magnitude > maxSpeed)
@@ -117,7 +118,7 @@ public class Swing : MonoBehaviour
 
 
             float distance = Vector3.Distance(playerRB.position, swingPoint);
-            joint.maxDistance = distance / 1.25f;
+            joint.maxDistance = distance / 1.05f;
 
             joint.spring = 20f;
             joint.damper = 10f;
@@ -130,7 +131,7 @@ public class Swing : MonoBehaviour
     {
         
         Destroy(joint);
-        
+        InvokeRepeating("IncreaseGrav", 2, 0.5f);
        
     }
     public void GetSwingPoint()
@@ -215,6 +216,12 @@ public class Swing : MonoBehaviour
             UIOpened = true;
         }
     }
-    
+   IEnumerator IncreaseGrav()
+    {
+        Gravityamount = Gravityamount + 1f;
+        Physics.gravity = new Vector3(0,Gravityamount,0);
+        Debug.Log(Physics.gravity);
+        yield return new WaitForSeconds(1f);
+    }
 
 }
